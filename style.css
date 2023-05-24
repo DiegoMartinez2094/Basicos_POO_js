@@ -1,0 +1,24 @@
+.container{
+    margin-top: 50px;
+    background-color:rgb(71, 131, 131);
+    width: 400px;
+    border-radius: 20px;
+    padding: 10px;
+    
+    
+}
+.form-control{
+    margin-left: 40%;
+    width: 200px;
+}
+.btn-outline-dark{
+    margin-top: 30px;
+    width: 200px;
+    margin-left: 22%;
+    
+}
+#textarea{
+    margin-top: 30px;
+    margin-left: 5%;
+    width: 350px;
+}
