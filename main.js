@@ -9,7 +9,7 @@ saludar(){ //metodo
 }
 
 static esMayorDeEdad(){ //metod static no necesita instanciar la clase para ser llamado, se llama directamente a la clase padre
-   if(this.edadPersona>17){
+   if(this.edadPersona>=18){
      return true
    }
    else{
