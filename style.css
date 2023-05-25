@@ -1,11 +1,9 @@
 .container{
     margin-top: 50px;
-    background-color:rgb(71, 131, 131);
+    background-image: url(./img_perros-mundo-3.jpg);
     width: 400px;
     border-radius: 20px;
-    padding: 10px;
-    
-    
+    padding: 10px;  
 }
 .form-control{
     margin-left: 40%;
