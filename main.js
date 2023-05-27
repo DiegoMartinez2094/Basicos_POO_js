@@ -1,55 +1,52 @@
-class persona {//clase padre persona
-    constructor(nombre, edad, sexo) {
-      this.nombrePersona = nombre; //se reciben los 3 parametros(nombre, edad, sexo) y los agg a las porpiedades de la clase con this. 
-      this.edadPersona = edad;
-      this.sexoPersona = sexo;
+class vehiculo{
+    constructor(marca, modelo, velocidad ){
+        this.marcaVehiculo=marca;
+        this.modeloVehiculo=modelo;
+        this.velocidadVehiculo=velocidad;
     }
-    saludar(){ //metodo
-     return "Hola " + this.nombrePersona;
+    acelerar(){
+        return "el vehículo de marca: "+ this.marcaVehiculo + " aceleró a: "+ (this.velocidadVehiculo+10);
     }
-    
-    static esMayorDeEdad(){ //metod static no necesita instanciar la clase para ser llamado, se llama directamente a la clase padre
-       if(this.edadPersona>=18){
-         return true
-       }
-       else{
-         return false
-       } 
+    static convertirKmHEnMph() {
+        return "la velocidad del vehiculo en MpH es: "+this.velocidadVehiculo/1.60934;
     }
-    
-     }
-    
-    
-     class estudiante extends persona{ //clase hijo estudiante
-      constructor(nombre,edad,sexo,materia){
-        super(nombre,edad,sexo); //no es nesesario hacer el this.nombre por que esos ya están en la clase padre, solo de las nuevas del hijo
-        //en el super debo poner todos los parametros que traigo de la clase padre
-        this.materia=materia
-      }
-        saludarEstudiante(){
-        return super.saludar() + " Tu materia es: " + this.materia//llamo al metodo de la super clase
-        }
-     }
-    
-     function saludarPersona() {
-      let nombre = document.getElementById("nombre").value;
-      let edad = document.getElementById("edad").value;
-      let sexo = document.getElementById("sexo").value;
-      let materia = document.getElementById("materia").value;
-          //creamos la persona:
-        let objPersona= new persona(nombre,edad,sexo,materia);
-        console.log(objPersona.saludar())
-        document.getElementById("textarea").innerHTML =objPersona.saludar() ;     
-     }
-    
-    
-      const btnSaludarEstudiante = document.querySelector('#btn-saludarEstudiante');
-      btnSaludarEstudiante.addEventListener("click",saludarEstudiante);
-      function saludarEstudiante(){
-      let nombre = document.getElementById("nombre").value;
-      let edad = document.getElementById("edad").value;
-      let sexo = document.getElementById("sexo").value;
-      let materia = document.getElementById("materia").value;
-       let objestudiante =new estudiante(nombre, edad, sexo, materia);
-       document.getElementById("textarea").innerHTML =objestudiante.saludarEstudiante() ;
-     }
+}
+
+// vehiculo.convertirKmHEnMph();
+
+class coche extends vehiculo{
+ constructor(marca, modelo, velocidad, combustible){
+    super(marca, modelo, velocidad)
+    this.combustible=combustible;
+ }
+ acelerar(){
+    return "el coche de marca: "+ this.marcaVehiculo+" aceleró: " + (this.velocidadVehiculo+20);
+ }
+}
+// let coche1=new coche(marca, modelo, velocidad, combustible);
+// coche1.acelerar();
+
+let btn1= document.querySelector("#btnAcelerar")
+btn1.addEventListener("click",acelerar);
+
+function acelerar(){
+let marca =document.querySelector("#marca").value;
+let modelo=document.querySelector("#modelo").value;
+let velocidad=Number(document.querySelector("#velocidad").value) ;
+let vehiculo1= new vehiculo(marca, modelo, velocidad);
+document.querySelector("#textarea").innerHTML= vehiculo1.acelerar();
+}
+
+
+ let btn2= document.querySelector("#btnAcelerarCoche")
+ btn2.addEventListener("click", acelerarCoche);
+
+ function acelerarCoche(){
+ let marca=document.getElementById("marcaCoche").value;
+ let modelo=document.getElementById("modeloCoche").value;
+ let velocidad= Number(document.getElementById("velocidadCoche").value) ;
+ let combustible=document.getElementById("combustibleCoche").value;
+ let coche1=new coche(marca, modelo, velocidad, combustible);
+ document.getElementById("textareaCoche").innerHTML=coche1.acelerar();
+ 
+ }
