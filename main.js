@@ -1,52 +1,50 @@
-class vehiculo{
-    constructor(marca, modelo, velocidad ){
-        this.marcaVehiculo=marca;
-        this.modeloVehiculo=modelo;
-        this.velocidadVehiculo=velocidad;
+class empleado{
+    constructor(nombre, edad, sueldo){
+        this.nombreEmpleado=nombre;
+        this.edadEmpleado=edad;
+        this.sueldoEmpleado=sueldo;
     }
-    acelerar(){
-        return "el vehículo de marca: "+ this.marcaVehiculo + " aceleró a: "+ (this.velocidadVehiculo+10);
+    calcularSalarioAnual(){
+        return "el salario anual del empleado: "+this.nombreEmpleado+ " es: " + (this.sueldoEmpleado*12)
     }
-    static convertirKmHEnMph() {
-        return "la velocidad del vehiculo en MpH es: "+this.velocidadVehiculo/1.60934;
+    static generarIdEmpleado(){
+        let id=0;
+        id++;
+        return "el ID del empleado es:"+id
     }
 }
 
-// vehiculo.convertirKmHEnMph();
 
-class coche extends vehiculo{
- constructor(marca, modelo, velocidad, combustible){
-    super(marca, modelo, velocidad)
-    this.combustible=combustible;
- }
- acelerar(){
-    return "el coche de marca: "+ this.marcaVehiculo+" aceleró: " + (this.velocidadVehiculo+20);
- }
-}
-// let coche1=new coche(marca, modelo, velocidad, combustible);
-// coche1.acelerar();
-
-let btn1= document.querySelector("#btnAcelerar")
-btn1.addEventListener("click",acelerar);
-
-function acelerar(){
-let marca =document.querySelector("#marca").value;
-let modelo=document.querySelector("#modelo").value;
-let velocidad=Number(document.querySelector("#velocidad").value) ;
-let vehiculo1= new vehiculo(marca, modelo, velocidad);
-document.querySelector("#textarea").innerHTML= vehiculo1.acelerar();
+class gerente extends empleado{
+    constructor(nombre, edad, sueldo, departamento){
+        super(nombre,edad, sueldo)
+        this.departamento=departamento;
+    }
+    calcularSalarioAnual(){
+        return "el salario anual del empleado: "+ this.nombreEmpleado+ " es: "+ (this.sueldoEmpleado*12)+" más bono 10%= "+((this.sueldoEmpleado*0.1)*12) + " para un total de: "+((this.sueldoEmpleado*12)+((this.sueldoEmpleado*0.1)*12));
+    }
 }
 
 
- let btn2= document.querySelector("#btnAcelerarCoche")
- btn2.addEventListener("click", acelerarCoche);
+let btnCrearEmpleado = document.querySelector("#btnCrearEmpleado");
+btnCrearEmpleado.addEventListener("click",CREAREMPLEADO);
 
- function acelerarCoche(){
- let marca=document.getElementById("marcaCoche").value;
- let modelo=document.getElementById("modeloCoche").value;
- let velocidad= Number(document.getElementById("velocidadCoche").value) ;
- let combustible=document.getElementById("combustibleCoche").value;
- let coche1=new coche(marca, modelo, velocidad, combustible);
- document.getElementById("textareaCoche").innerHTML=coche1.acelerar();
- 
- }
+function CREAREMPLEADO(){
+    let nombre = document.querySelector("#nombre").value;
+    let edad = document.querySelector('#edad').value;
+    let sueldo = Number(document.querySelector("#sueldo").value);
+    let empleado1 = new empleado(nombre, edad, sueldo);
+    document.querySelector("#textareaEmpleado").innerHTML= empleado1.calcularSalarioAnual();
+}
+
+let btnCrearGerente = document.querySelector("#btnCrearGerente");
+btnCrearGerente.addEventListener("click",CREARGERENTE);
+
+function CREARGERENTE(){
+    let nombre =document.querySelector("#nombreGerente").value;
+    let edad =document.querySelector('#edadGerente').value;
+    let sueldo = Number(document.querySelector("#salarioGerente").value) ;
+    let departamento = Number(document.querySelector("#departamentoGerente").value) ;
+    let gerente1 = new gerente(nombre, edad, sueldo, departamento);
+    document.querySelector("#textareaGerente").innerHTML= gerente1.calcularSalarioAnual();
+}
