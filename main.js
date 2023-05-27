@@ -1,61 +1,55 @@
-class figura{
-    constructor(color,area){
-        this.colorFigura=color
-        this.areaFigura=area
+class persona {//clase padre persona
+    constructor(nombre, edad, sexo) {
+      this.nombrePersona = nombre; //se reciben los 3 parametros(nombre, edad, sexo) y los agg a las porpiedades de la clase con this. 
+      this.edadPersona = edad;
+      this.sexoPersona = sexo;
     }
-    calcularArea(){
-        return this.areaFigura
+    saludar(){ //metodo
+     return "Hola " + this.nombrePersona;
     }
-}
-// let figura1 = new figura('red',10)
-// figura1.calcularArea
-
-class circulo extends figura{
-    constructor(color, radio){
-        super(color)
-        this.radioFigura=radio;
-        
+    
+    static esMayorDeEdad(){ //metod static no necesita instanciar la clase para ser llamado, se llama directamente a la clase padre
+       if(this.edadPersona>=18){
+         return true
+       }
+       else{
+         return false
+       } 
     }
-    calcularArea1(){
-            return "el area del circulo es: "+ Math.PI*this.radioFigura*this.radioFigura
+    
+     }
+    
+    
+     class estudiante extends persona{ //clase hijo estudiante
+      constructor(nombre,edad,sexo,materia){
+        super(nombre,edad,sexo); //no es nesesario hacer el this.nombre por que esos ya están en la clase padre, solo de las nuevas del hijo
+        //en el super debo poner todos los parametros que traigo de la clase padre
+        this.materia=materia
+      }
+        saludarEstudiante(){
+        return super.saludar() + " Tu materia es: " + this.materia//llamo al metodo de la super clase
         }
-}
-// let circulo1 = new circulo("red",5)
-// circulo1.calcularArea();
-
-class rectangulo extends figura{
-    constructor(color, ancho,largo){
-      super(color);
-        this.anchoFigura=ancho;
-        this.largoFigura=largo;
-        
-    }
-    calcularArea2(){
-            return "el area del rectangulo es: "+ this.anchoFigura*this.largoFigura;
-        }
-}
-// rectangulo1=new rectangulo("blue",10,5);
-// rectangulo1.calcularArea();
-
-
-let btn1= document.querySelector("#btnAreaCir")
-btn1.addEventListener("click",areaCirculo);
-
-function areaCirculo(){
-let radio=document.getElementById("radio").value;
-let color=document.getElementById("colorCirculo").value;
-let circulo1=new circulo(color, radio);
-document.getElementById("textarea1").innerHTML= circulo1.calcularArea1()
-}
-
-
-let btn2= document.querySelector("#btnAreaRec")
-btn2.addEventListener("click",areaRectangulo);
-
-function areaRectangulo(){
-let ancho=document.getElementById("ancho").value;
-let largo=document.getElementById("largo").value;
-let color=document.getElementById("colorRectangulo").value;
-let rectangulo1=new rectangulo(color, ancho, largo);
-document.getElementById("textarea2").innerHTML=rectangulo1.calcularArea2();
-}
+     }
+    
+     function saludarPersona() {
+      let nombre = document.getElementById("nombre").value;
+      let edad = document.getElementById("edad").value;
+      let sexo = document.getElementById("sexo").value;
+      let materia = document.getElementById("materia").value;
+          //creamos la persona:
+        let objPersona= new persona(nombre,edad,sexo,materia);
+        console.log(objPersona.saludar())
+        document.getElementById("textarea").innerHTML =objPersona.saludar() ;     
+     }
+    
+    
+      const btnSaludarEstudiante = document.querySelector('#btn-saludarEstudiante');
+      btnSaludarEstudiante.addEventListener("click",saludarEstudiante);
+      function saludarEstudiante(){
+      let nombre = document.getElementById("nombre").value;
+      let edad = document.getElementById("edad").value;
+      let sexo = document.getElementById("sexo").value;
+      let materia = document.getElementById("materia").value;
+       let objestudiante =new estudiante(nombre, edad, sexo, materia);
+       document.getElementById("textarea").innerHTML =objestudiante.saludarEstudiante() ;
+     }

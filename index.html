@@ -11,90 +11,58 @@
       crossorigin="anonymous"
     />
     <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
     <title>Basic_POO</title>
   </head>
   <body>
     <div class="container">
       <div class="row g-3 align-items-center">
-        <h1 style="text-align: center">Circulo</h1>
+       
         <div class="col-auto">
-          <input
-            type="text"
-            id="colorCirculo"
-            class="form-control"
-            placeholder="ingrese el color"
-          />
+          <input type="text" id="nombre" class="form-control" placeholder="Nombre" />
         </div>
       </div>
       <br />
       <div class="row g-3 align-items-center">
         <div class="col-auto">
-          <input
-            type="text"
-            id="radio"
-            class="form-control"
-            placeholder="ingrese el radio"
-          />
+          <input type="text" id="edad" class="form-control" placeholder="Edad" />
         </div>
       </div>
       <br />
 
       <div class="row g-3 align-items-center">
-        <button type="button" class="btn btn-outline-dark" id="btnAreaCir">
-          Calcular area
-        </button>
-        <br/>
+        <div class="col-auto">
+          <select class="form-select" aria-label="Default select example" id="sexo" >
+            <option selected>elige el sexo</option>
+            <option value="F">Femenino</option>
+            <option value="M">masculino</option>
+          </select>
+        </div>
       </div>
-      <br>
-       <textarea class="form-control" id="textarea1" rows="3" style="margin-left: 80px;"></textarea>
-      <br/>
-      <hr>
+
+      <br />
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <input type="text" id="materia" class="form-control" placeholder="materia" />
+        </div>
+      </div>
 
       <div class="row g-3 align-items-center">
-        <h1 style="text-align: center">Rectangulo</h1>
-        <div class="col-auto">
-          <input
-            type="text"
-            id="colorRectangulo"
-            class="form-control"
-            placeholder="ingrese el color"
-          />
-        </div>
+        <button type="button" class="btn btn-outline-dark" id="btn-saludarPersona" onclick="saludarPersona()">Saludar Persona</button>
       </div>
-      <br />
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <input
-            type="text"
-            id="ancho"
-            class="form-control"
-            placeholder="ingrese el ancho"
-          />
-        </div>
-      </div>
-      <br />
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <input
-            type="text"
-            id="largo"
-            class="form-control"
-            placeholder="ingrese la largo"
-          />
-        </div>
-      </div>
-      <br />
-      <div class="row g-3 align-items-center">
-        <button type="button" class="btn btn-outline-dark" id="btnAreaRec">
-          Calcular area
-        </button>
-      </div>
-        <br>
-      <div class="row g-3 align-items-center">
-        <textarea class="form-control" id="textarea2" rows="3" style="margin-left: 80px;"></textarea>
-      </div>
+      
+    <div class="row g-3 align-items-center">
+      <button type="button" class="btn btn-outline-dark" id="btn-saludarEstudiante">Saludar Estudiante</button>
     </div>
+
+      <div class="row g-3 align-items-center">
+      <textarea class="form-control" id="textarea" rows="3"></textarea>
+    </div>
+    
+
+   
+    </div>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
